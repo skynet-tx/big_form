@@ -1,0 +1,138 @@
+<div class="row">
+	<section ng-repeat="driver in drivers" class="col-md-6 col-md-offset-3 row">
+		<div class="col-md-6 text-center">
+			<br />
+			<br />
+			<div n-edit-dir="" data-number="{{$index}}" data-model="drivers" data-param="name"></div>
+		</div>
+		<div class="col-md-3">
+			<div class="form-group">
+				<label class="control-label">
+					Age
+				</label>
+				<select class="form-control"
+					name="{{'drivers['+ $index+ '][\'age\']'}}"
+					ng-model="driver.age"
+					ng-options="item for item in age track by item">
+					<option value="">-Select Age-</option>
+				</select>
+			</div>
+		</div>
+		<div class="col-md-3">
+			<div class="form-group">
+				<label class="control-label">
+					Gender
+				</label>
+				<select class="form-control"
+					name="{{'drivers['+ $index+ '][\'gender\']'}}"
+					ng-model="driver.gender"
+					ng-options="item.name for item in gender track by item.id">
+					<option value="">-Select Gender-</option>
+				</select>
+			</div>
+		</div>
+		<div class="col-md-6">
+			<div class="form-group">
+				<label class="control-label">
+					Education
+				</label>
+				<select class="form-control"
+					name="{{'drivers['+ $index+ '][\'education\']'}}"
+					ng-model="driver.education"
+					ng-options="item.name for item in education track by item.id">
+					<option value="">-Select Education-</option>
+				</select>
+			</div>
+		</div>
+		<div class="col-md-6">
+			<div class="form-group">
+				<label class="control-label">
+					Family
+				</label>
+				<select class="form-control"
+					name="{{'drivers['+ $index+ '][\'marital_status\']'}}"
+					ng-model="driver.maritalStatus"
+					ng-options="item.name for item in marital_status track by item.id">
+					<option value="">-Select Family-</option>
+				</select>
+			</div>
+		</div>
+		<div class="col-md-6">
+			<div class="form-group">
+				<label class="control-label">
+					License
+				</label>
+				<select class="form-control"
+					name="{{'drivers['+ $index+ '][\'permit_status\']'}}"
+					ng-model="driver.permitStatus "
+					ng-options="item.name for item in permit_status track by item.id">
+					<option value="">-Select License-</option>
+				</select>
+			</div>
+		</div>
+		<div class="col-md-6">
+			<div class="form-group">
+				<label class="control-label">
+					Good Driver
+				</label>
+				<select class="form-control"
+					name="{{'drivers['+ $index+ '][\'accident_count\']'}}"
+					ng-model="driver.accidentCount "
+					ng-options="item for item in accident_count track by item">
+					<option value="">-Good Driver-</option>
+				</select>
+			</div>
+		</div>
+		<div ng-repeat-start="driver_vehicle in drivers_vehicles[$index]" class="col-md-6">
+			<br />
+			<br />
+			{{ driver_vehicle.name }}
+		</div>
+		<div ng-repeat-end class="col-md-6">
+			<div class="form-group">
+				<label class="control-label">
+					Type
+				</label>
+				<select class="form-control"
+						name="{{'drivers_vehicles['+ $parent.$index+ ']['+ $index+ '][\'driver_type\']'}}"
+						ng-model="drivers_vehicles[$parent.$index][$index]['driver_type']"
+						ng-options="item.name for item in driver_types track by item.id">
+					<option value="">-Type-</option>
+				</select>
+			</div>
+		</div>
+		<div class="col-md-12">
+			<button class="btn btn-danger pull-right" data-ng-click="onClickDriverRemove($index)">
+				Remove
+			</button>
+			<button class="btn btn-warning pull-right" data-ng-click="onClickDriverClear($index)">
+				Clear
+			</button>
+		</div>
+	</section>
+</div>
+
+<div class="row">
+&nbsp;
+</div>
+
+<div class="row">
+	<div class="col-md-3 bs-column">
+	</div>
+	<div class="col-md-1 bs-column form-group">
+		<button data-ng-click="onClickDriverAdd()" class="btn btn-success btn-block">
+			Add driver
+		</button>
+	</div>
+	<div class="col-md-4 bs-column">
+	</div>
+	<div class="col-md-1 bs-column form-group">
+		<button type="submit"
+				ng-disabled="!isDriverNextBtnDisabled"
+				class="btn btn-success btn-block driver-next-btn">
+			Next
+		</button>
+	</div>
+	<div class="col-md-3 bs-column">
+	</div>
+</div>

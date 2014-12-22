@@ -1,0 +1,26 @@
+<div>
+<b  class="drivers-name-change"
+	data-ng-click="onChangeEditableStatus()"
+	ng-hide="isLableHide"
+	data-attr-number="{{indexRow}}">
+	{{lableText}} #{{ indexRow }}
+</b>
+	<div class="form-inline" ng-show="isLableHide">
+		<div class="form-group" >
+			<label class="sr-only">Driver Name</label>
+			<input class="form-control"
+				   name="{{model}}"
+				   type="name" ng-model="lableText">
+		</div>
+		<div class="form-group">
+			<button type="button"
+					data-ng-click="onSave()"
+					class="btn btn-primary"><i class="glyphicon glyphicon-ok"></i></button>
+		</div>
+		<div class="form-group">
+			<button type="button"
+					data-ng-click="onSave()"
+					class="btn btn-danger"><i class="glyphicon glyphicon-remove"></i></button>
+		</div>
+	</div>
+</div>
